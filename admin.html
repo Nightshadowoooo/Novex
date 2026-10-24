@@ -1,38 +1,70 @@
 <!doctype html>
-<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>مدیریت | NOVEX</title><style>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مدیریت | NOVEX</title>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-:root{--bg:#050918;--panel:#0b1228;--purple:#8b43ff;--cyan:#00e7f2;--text:#f4f6ff;--muted:#a5aecb;--line:rgba(111,154,255,.18)}
+:root{--panel:#0b1228;--cyan:#00e7f2;--text:#f4f6ff;--muted:#a5aecb;--line:rgba(111,154,255,.18)}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;padding:22px 14px 40px;font-family:Vazirmatn,Tahoma,sans-serif;color:var(--text);background:radial-gradient(ellipse at 75% 5%,#102e63 0,transparent 32%),radial-gradient(ellipse at 4% 18%,#261050 0,transparent 35%),linear-gradient(180deg,#050817,#060b1b 55%,#040713);background-attachment:fixed}
-.wrap{width:min(900px,100%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.brand{font-weight:900;font-size:18px}.brand span{color:var(--cyan)}nav{display:flex;gap:8px;flex-wrap:wrap}a{color:var(--cyan);text-decoration:none}nav a,.btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#0b1228;color:var(--text);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-.hero,.card{background:rgba(11,18,40,.92);border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:16px;box-shadow:0 20px 55px #0003}.hero{background:linear-gradient(135deg,#8b43ff20,#00e7f210),rgba(11,18,40,.92)}h1{margin:0 0 8px;font-size:clamp(25px,5vw,36px)}h2{margin:0 0 14px;font-size:19px}.muted{color:var(--muted);font-size:13px;line-height:1.9}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}.field label{font-size:12px;color:var(--muted)}input,select{width:100%;background:#050918;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:13px;font:inherit;outline:none}input:focus,select:focus{border-color:var(--cyan)}.btn.primary{background:linear-gradient(135deg,var(--cyan),#8bf6e8);color:#07131a;border:0}.actions{display:flex;gap:8px;flex-wrap:wrap}.status{padding:12px;border-radius:12px;background:#00e7f210;border:1px solid #00e7f230;color:var(--cyan);font-size:13px;line-height:1.8;margin:10px 0;white-space:pre-wrap}.status.error{color:#ffb1b1;background:#ff575710;border-color:#ff575730}.hidden{display:none!important}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:550px}th,td{text-align:right;padding:11px;border-bottom:1px solid var(--line);font-size:12px}th{color:var(--cyan)}.footer{text-align:center;color:#68718e;font-size:11px;margin-top:20px}@media(max-width:600px){.grid{grid-template-columns:1fr}.hero,.card{padding:17px;border-radius:18px}.top{align-items:flex-start;flex-direction:column}}
-</style></head><body><main class="wrap">
+.wrap{width:min(1000px,100%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.brand{font-weight:900;font-size:18px}.brand span{color:var(--cyan)}nav,.actions{display:flex;gap:8px;flex-wrap:wrap}a{color:var(--cyan);text-decoration:none}nav a,.btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#0b1228;color:var(--text);font:inherit;font-size:13px;font-weight:700;cursor:pointer}.btn:disabled{opacity:.6;cursor:wait}.hero,.card{background:rgba(11,18,40,.92);border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:16px;box-shadow:0 20px 55px #0003}.hero{background:linear-gradient(135deg,#8b43ff20,#00e7f210),rgba(11,18,40,.92)}h1{margin:0 0 8px;font-size:clamp(25px,5vw,36px)}h2{margin:0 0 14px;font-size:19px}.muted{color:var(--muted);font-size:13px;line-height:1.9}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}.field label{font-size:12px;color:var(--muted)}input,select{background:#050918;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:13px;font:inherit;outline:none}input{width:100%}input:focus,select:focus{border-color:var(--cyan)}.btn.primary{background:linear-gradient(135deg,var(--cyan),#8bf6e8);color:#07131a;border:0}.status{padding:12px;border-radius:12px;background:#00e7f210;border:1px solid #00e7f230;color:var(--cyan);font-size:13px;line-height:1.8;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}.status.error{color:#ffb1b1;background:#ff575710;border-color:#ff575730}.hidden{display:none!important}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:650px}th,td{text-align:right;padding:11px;border-bottom:1px solid var(--line);font-size:12px;vertical-align:middle}th{color:var(--cyan)}.footer{text-align:center;color:#68718e;font-size:11px;margin-top:20px}@media(max-width:600px){.grid{grid-template-columns:1fr}.hero,.card{padding:17px;border-radius:18px}.top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body><main class="wrap">
 <header class="top"><div class="brand"><span>NOVEX</span> · مدیریت</div><nav><a href="index.html">صفحه اصلی</a><a href="account.html">پنل کاربری</a></nav></header>
 <section class="hero"><h1>پنل مدیریت</h1><p class="muted">فقط حسابی که نقش admin برایش تنظیم شده باشد، می‌تواند اطلاعات کاربران و سفارش‌ها را ببیند.</p></section>
-<section class="card" id="loginCard"><h2>ورود مدیر</h2><div class="grid"><div class="field"><label for="email">ایمیل</label><input id="email" type="email"></div><div class="field"><label for="password">رمز عبور</label><input id="password" type="password"></div></div><button class="btn primary" id="login">ورود</button><div id="loginMsg" class="status hidden"></div></section>
-<section class="card hidden" id="dashboard"><div class="actions" style="justify-content:space-between;align-items:center"><h2>کاربران</h2><button class="btn" id="logout">خروج</button></div><div class="table-wrap"><table><thead><tr><th>اسم</th><th>ایمیل / شناسه</th><th>تلگرام</th><th>روبیکا</th><th>تاریخ عضویت</th></tr></thead><tbody id="usersBody"></tbody></table></div>
-<h2 style="margin-top:25px">سفارش‌ها</h2><div class="table-wrap"><table><thead><tr><th>کاربر</th><th>حجم</th><th>مبلغ</th><th>وضعیت</th><th>تاریخ</th><th>تغییر وضعیت</th></tr></thead><tbody id="ordersBody"></tbody></table></div><div id="dashMsg" class="status hidden"></div></section>
-<p class="footer">اطلاعات کاربران فقط برای مدیریت سفارش‌ها استفاده شود.</p></main>
+<section class="card" id="loginCard"><h2>ورود مدیر</h2><div class="grid"><div class="field"><label for="email">ایمیل</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"></div><div class="field"><label for="password">رمز عبور</label><input id="password" type="password" autocomplete="current-password"></div></div><button class="btn primary" id="login">ورود</button><div id="loginMsg" class="status hidden" role="status"></div></section>
+<section class="card hidden" id="dashboard"><div class="actions" style="justify-content:space-between;align-items:center"><h2>کاربران</h2><button class="btn" id="logout">خروج</button></div><div class="table-wrap"><table><thead><tr><th>اسم</th><th>شناسه کاربر</th><th>تلگرام</th><th>روبیکا</th><th>تاریخ عضویت</th></tr></thead><tbody id="usersBody"></tbody></table></div><h2 style="margin-top:25px">سفارش‌ها</h2><div class="table-wrap"><table><thead><tr><th>شناسه کاربر</th><th>حجم</th><th>مبلغ</th><th>وضعیت</th><th>تاریخ</th><th>تغییر وضعیت</th></tr></thead><tbody id="ordersBody"></tbody></table></div><div id="dashMsg" class="status hidden" role="status"></div></section>
+<p class="footer">NOVEX · اطلاعات کاربران فقط برای مدیریت سفارش‌ها استفاده شود.</p></main>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-const supabase=createClient('https://nmyfrftikxeojjmukamu.supabase.co','sb_publishable_1TqB20K203aEE8yxWoKlZA_E-8gIEtV');
-const $=id=>document.getElementById(id);
-function msg(id,text,error=false){const e=$(id);e.textContent=text;e.classList.remove('hidden','error');if(error)e.classList.add('error');}
-async function showDashboard(user){ 
- if(!user){ $('loginCard').classList.remove('hidden');$('dashboard').classList.add('hidden');return; }
- if(user.app_metadata?.role!=='admin'){ $('loginCard').classList.remove('hidden');$('dashboard').classList.add('hidden');msg('loginMsg','این حساب دسترسی مدیر ندارد. نقش admin را طبق README تنظیم کن.',true);return; }
- $('loginCard').classList.add('hidden');$('dashboard').classList.remove('hidden');
- const p=await supabase.from('profiles').select('id,display_name,telegram,rubika,created_at').order('created_at',{ascending:false});
- if(p.error){msg('dashMsg','خطا در دریافت کاربران: '+p.error.message,true);return;}
- $('usersBody').innerHTML='';
- for(const u of p.data||[]){const tr=document.createElement('tr');for(const v of [u.display_name||'—',u.id,u.telegram||'—',u.rubika||'—',u.created_at?new Date(u.created_at).toLocaleDateString('fa-IR'):'—']){const td=document.createElement('td');td.textContent=v;tr.appendChild(td);}$('usersBody').appendChild(tr);}
- const o=await supabase.from('orders').select('id,user_id,volume_gb,total_toman,status,created_at').order('created_at',{ascending:false});
- if(o.error){msg('dashMsg','خطا در دریافت سفارش‌ها: '+o.error.message,true);return;}
- $('ordersBody').innerHTML='';
- for(const order of o.data||[]){const tr=document.createElement('tr');for(const v of [order.user_id,order.volume_gb+' GB',Number(order.total_toman).toLocaleString('fa-IR')+' تومان',order.status,new Date(order.created_at).toLocaleDateString('fa-IR')]){const td=document.createElement('td');td.textContent=v;tr.appendChild(td);}
- const td=document.createElement('td'), sel=document.createElement('select');['در انتظار پیگیری','در حال انجام','تکمیل شد','لغو شد'].forEach(s=>{const op=document.createElement('option');op.value=s;op.textContent=s;if(s===order.status)op.selected=true;sel.appendChild(op);});const b=document.createElement('button');b.className='btn';b.textContent='ذخیره';b.addEventListener('click',async()=>{const r=await supabase.from('orders').update({status:sel.value}).eq('id',order.id);if(r.error)msg('dashMsg','وضعیت ذخیره نشد: '+r.error.message,true);else msg('dashMsg','وضعیت سفارش به‌روزرسانی شد.');});td.append(sel,b);tr.appendChild(td);$('ordersBody').appendChild(tr);}
+const SUPABASE_URL = 'https://nmyfrftikxeojjmukamu.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_1TqB20K203aEE8yxWoKlZA_E-8gIEtV';
+const $ = id => document.getElementById(id);
+function msg(id, text, error=false) { const el=$(id); el.textContent=text; el.classList.remove('hidden','error'); if(error) el.classList.add('error'); }
+function hideMsg(id) { $(id).classList.add('hidden'); $(id).classList.remove('error'); }
+let supabase;
+try { supabase = createClient(SUPABASE_URL, SUPABASE_KEY); }
+catch (err) { msg('loginMsg','راه‌اندازی Supabase ناموفق بود: '+(err?.message || String(err)),true); }
+function cell(row, value) { const td=document.createElement('td'); td.textContent=value == null || value === '' ? '—' : String(value); row.appendChild(td); return td; }
+async function showDashboard(user) {
+ if (!user) { $('loginCard').classList.remove('hidden'); $('dashboard').classList.add('hidden'); return; }
+ if (user.app_metadata?.role !== 'admin') { $('loginCard').classList.remove('hidden'); $('dashboard').classList.add('hidden'); msg('loginMsg','ورود انجام شد، اما این حساب نقش admin ندارد. نقش را در Supabase تنظیم کن و دوباره خارج و وارد شو.',true); return; }
+ $('loginCard').classList.add('hidden'); $('dashboard').classList.remove('hidden'); hideMsg('dashMsg');
+ try {
+  const p=await supabase.from('profiles').select('id,display_name,telegram,rubika,created_at').order('created_at',{ascending:false});
+  if(p.error) { msg('dashMsg','خطا در دریافت کاربران: '+p.error.message,true); return; }
+  $('usersBody').replaceChildren();
+  for(const u of p.data||[]) { const tr=document.createElement('tr'); cell(tr,u.display_name); cell(tr,u.id); cell(tr,u.telegram); cell(tr,u.rubika); cell(tr,u.created_at?new Date(u.created_at).toLocaleDateString('fa-IR'):'—'); $('usersBody').appendChild(tr); }
+  const o=await supabase.from('orders').select('id,user_id,volume_gb,total_toman,status,created_at').order('created_at',{ascending:false});
+  if(o.error) { msg('dashMsg','خطا در دریافت سفارش‌ها: '+o.error.message,true); return; }
+  $('ordersBody').replaceChildren();
+  for(const order of o.data||[]) {
+   const tr=document.createElement('tr'); cell(tr,order.user_id); cell(tr,order.volume_gb+' GB'); cell(tr,Number(order.total_toman).toLocaleString('fa-IR')+' تومان'); cell(tr,order.status); cell(tr,order.created_at?new Date(order.created_at).toLocaleDateString('fa-IR'):'—');
+   const td=document.createElement('td'), sel=document.createElement('select');
+   ['در انتظار پیگیری','در حال انجام','تکمیل شد','لغو شد'].forEach(s=>{const op=document.createElement('option');op.value=s;op.textContent=s;if(s===order.status)op.selected=true;sel.appendChild(op);});
+   const b=document.createElement('button'); b.className='btn'; b.textContent='ذخیره';
+   b.addEventListener('click',async()=>{b.disabled=true;try{const r=await supabase.from('orders').update({status:sel.value}).eq('id',order.id);if(r.error)msg('dashMsg','وضعیت ذخیره نشد: '+r.error.message,true);else msg('dashMsg','وضعیت سفارش به‌روزرسانی شد.');}catch(err){msg('dashMsg','خطای اتصال هنگام ذخیره: '+(err?.message||String(err)),true);}finally{b.disabled=false;}});
+   td.append(sel,document.createTextNode(' '),b); tr.appendChild(td); $('ordersBody').appendChild(tr);
+  }
+ } catch(err) { msg('dashMsg','خطای اتصال یا اجرای درخواست: '+(err?.message||String(err)),true); }
 }
-$('login').addEventListener('click',async()=>{const {data,error}=await supabase.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)return msg('loginMsg',error.message,true);await showDashboard(data.user);});
-$('logout').addEventListener('click',async()=>{await supabase.auth.signOut();$('dashboard').classList.add('hidden');$('loginCard').classList.remove('hidden');});
-const {data}=await supabase.auth.getSession();if(data.session)await showDashboard(data.session.user);
+$('login').addEventListener('click',async()=>{
+ hideMsg('loginMsg');
+ const email=$('email').value.trim(), password=$('password').value;
+ if(!email || !password) { msg('loginMsg','ایمیل و رمز عبور را وارد کن.',true); return; }
+ const button=$('login'); button.disabled=true; button.textContent='در حال ورود…';
+ try {
+  if(!supabase) throw new Error('کتابخانه Supabase آماده نشده است. صفحه را تازه‌سازی کن.');
+  const {data,error}=await supabase.auth.signInWithPassword({email,password});
+  if(error) { msg('loginMsg','خطای ورود: '+error.message,true); return; }
+  if(!data?.user) { msg('loginMsg','ورود انجام نشد؛ کاربر از پاسخ سرور دریافت نشد.',true); return; }
+  await showDashboard(data.user);
+ } catch(err) { msg('loginMsg','خطای اتصال به Supabase: '+(err?.message||String(err))+'\nاینترنت/VPN، آدرس پروژه و کلید عمومی Supabase را بررسی کن.',true); }
+ finally { button.disabled=false; button.textContent='ورود'; }
+});
+$('password').addEventListener('keydown',e=>{if(e.key==='Enter')$('login').click();});
+$('logout').addEventListener('click',async()=>{try{if(supabase)await supabase.auth.signOut();}catch(err){msg('dashMsg','خطا هنگام خروج: '+(err?.message||String(err)),true);}finally{$('dashboard').classList.add('hidden');$('loginCard').classList.remove('hidden');hideMsg('loginMsg');}});
+async function init(){try{if(!supabase)return;const {data,error}=await supabase.auth.getSession();if(error){msg('loginMsg','خطا در بررسی نشست: '+error.message,true);return;}if(data.session)await showDashboard(data.session.user);}catch(err){msg('loginMsg','خطای اتصال هنگام بررسی ورود: '+(err?.message||String(err)),true);}}
+init();
 </script></body></html>
