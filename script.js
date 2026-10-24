@@ -17,6 +17,8 @@ const fa = n => Number(n).toLocaleString('fa-IR');
 const toman = n => fa(n).replace(/٬/g, '٬') + ' تومان';
 const VALID = TIERS.slice().sort((a, b) => a.min - b.min).flatMap(t => Array.from({ length: Math.floor((t.max - t.min) / t.step) + 1 }, (_, i) => t.min + i * t.step));
 const tierFor = v => VALID.includes(v) ? (TIERS.find(t => v >= t.min && v <= t.max) || null) : null;
+/* تعرفه هر حجم دلخواه (۱ تا ۳۰۰): تا ۵۰ اقتصادی، تا ۹۰ ویژه، بالاتر حجم بالا */
+const tierOf = v => { const s = TIERS.slice().sort((a, b) => a.min - b.min); return s.find(t => v <= t.max) || s[s.length - 1]; };
 const toast = (() => { let h; return m => { const e = $('#toast'); e.textContent = m; e.classList.add('show'); clearTimeout(h); h = setTimeout(() => e.classList.remove('show'), 2400); }; })();
 
 /* منوی موبایل */
@@ -72,8 +74,7 @@ const grid = $('#tiers');
 if (grid) {
   let dur = 1, gb = 20, sel = null;
   const gbIn = $('#gb'), rg = $('#rg'), err = $('#err'), order = $('#orderBtn');
-  rg.max = VALID.length - 1;
-  rg.step = 1;
+  rg.min = 1; rg.max = 300; rg.step = 1;
 
   /* جدول همه حجم‌ها (از بزرگ به کوچک) */
   const vol = $('#vol');
@@ -119,7 +120,7 @@ if (grid) {
   TIERS.forEach(t => { const c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.textContent = `${t.name}: ${fa(t.min)} تا ${fa(t.max)} (پله ${fa(t.step)})`; c.addEventListener('click', () => { gb = t.min; syncIn(); calc(); }); chips.append(c); });
   paintTiers(dur); renderVol();
 
-  const syncIn = () => { gbIn.value = fa(gb); const i = VALID.indexOf(gb); if (i >= 0) rg.value = i; };
+  const syncIn = () => { gbIn.value = fa(gb); rg.value = gb; };
   const norm = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[,٬\s]/g, '');
   function nearest(v) { return VALID.reduce((a, b) => Math.abs(b - v) < Math.abs(a - v) ? b : a); }
 
@@ -129,8 +130,7 @@ if (grid) {
     if (!/^\d+$/.test(s)) return { e: 'فقط عدد صحیح و بدون اعشار وارد کن.' };
     const v = parseInt(s, 10);
     if (v === 0) return { e: 'حجم باید بیشتر از صفر باشد.' };
-    if (v < 10 || v > 300) return { e: 'حجم مجاز بین ۱۰ تا ۳۰۰ گیگابایت است.', v };
-    if (!tierFor(v)) return { e: `حجم ${fa(v)} مجاز نیست. ۱۰ تا ۹۰ با پله‌ی ۵ و ۱۰۰ تا ۳۰۰ با پله‌ی ۵۰ است. نزدیک‌ترین حجم معتبر: ${fa(nearest(v))} گیگابایت.`, v };
+    if (v < 1 || v > 300) return { e: 'حجم مجاز بین ۱ تا ۳۰۰ گیگابایت است.', v };
     return { v };
   }
   let cur = null;
@@ -139,14 +139,14 @@ if (grid) {
     err.textContent = r.e || '';
     const set = (a, b, c, d, e) => { $('#sT').textContent = a; $('#sV').textContent = b; $('#sD').textContent = c; $('#sP').textContent = d; $('#sTot').textContent = e; };
     if (r.e) { cur = null; order.disabled = true; set('-', '-', DUR[dur], '-', '-'); return; }
-    gb = r.v; const t = tierFor(gb), p = priceOf(t, dur);
+    gb = r.v; const t = tierOf(gb), p = priceOf(t, dur);
     cur = { t, gb, dur, p, total: gb * p }; order.disabled = false;
-    rg.value = VALID.indexOf(gb);
+    rg.value = gb;
     set(t.name, fa(gb) + ' گیگابایت', DUR[dur], toman(p), toman(cur.total));
   }
   gbIn.addEventListener('input', calc);
   gbIn.addEventListener('blur', () => { if (cur) gbIn.value = fa(cur.gb); });
-  rg.addEventListener('input', () => { gb = VALID[+rg.value]; syncIn(); calc(); });
+  rg.addEventListener('input', () => { gb = +rg.value; syncIn(); calc(); });
 
   /* پنجره سفارش */
   const ov = $('#ov'); let last;
@@ -169,4 +169,4 @@ if (grid) {
   syncIn(); calc();
   const h = decodeURIComponent(location.hash.slice(1));
   if (TIERS.some(t => t.id === h)) { setSel(h); setTimeout(() => $('#volSec').scrollIntoView(), 150); }
-}
+                                                      }
