@@ -7,6 +7,8 @@ const TIERS = [
   { id: 'special', name: 'تعرفه ویژه',   min: 60,  max: 90,  step: 5,  p1: 4500, p2: 6500, desc: 'مناسب مصرف متوسط با حجم متعادل.', rec: true },
   { id: 'eco',     name: 'تعرفه اقتصادی', min: 10,  max: 50,  step: 5,  p1: 5000, p2: 7000, desc: 'مناسب مصرف کم و شروع کار.' }
 ];
+/* حجم‌هایی که در لیست تعرفه‌ها نیستند: قیمت ثابت هر گیگابایت */
+const CUSTOM = { id: 'custom', name: 'حجم دلخواه', p1: 7000, p2: 9000 };
 const CONTACT = { telegram: 'https://t.me/Omid1262' };
 const DUR = { 1: 'یک ماه', 2: 'دو ماه' };
 
@@ -87,7 +89,7 @@ if (grid) {
     tb.append(cap, mk('thead')); tb.tHead.append(hr);
     const body = mk('tbody');
     const st = TIERS.find(x => x.id === sel);
-    $('#volTitle').textContent = st ? `حجم‌های ${st.name} (${fa(st.min)} تا ${fa(st.max)} گیگ)` : 'قیمت همه حجم‌ها';
+    $('#volTitle').textContent = st ? `لیست ${st.name} (${fa(st.min)} تا ${fa(st.max)} گیگ)` : 'قیمت همه حجم‌ها';
     $('#volAll').style.display = st ? '' : 'none';
     VALID.filter(v => !st || tierFor(v) === st).forEach(v => {
       const t = tierFor(v), p = priceOf(t, dur), tr = mk('tr');
@@ -158,7 +160,7 @@ if (grid) {
     err.textContent = r.e || '';
     const set = (a, b, c, d, e) => { $('#sT').textContent = a; $('#sV').textContent = b; $('#sD').textContent = c; $('#sP').textContent = d; if (typeof e === 'string') { $('#sTot')._v = null; cancelAnimationFrame($('#sTot')._r); $('#sTot').textContent = e; } else anim($('#sTot'), e, toman); };
     if (r.e) { cur = null; order.disabled = true; set('-', '-', DUR[dur], '-', '-'); orbSet(null); return; }
-    gb = r.v; const t = tierOf(gb), p = priceOf(t, dur);
+    gb = r.v; const t = tierFor(gb) || CUSTOM, p = priceOf(t, dur);
     cur = { t, gb, dur, p, total: gb * p }; order.disabled = false;
     rg.value = gb;
     set(t.name, fa(gb) + ' گیگابایت', DUR[dur], toman(p), cur.total);
