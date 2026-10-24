@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVEX | تعرفه‌ها و ثبت سفارش</title>
+<title>VPN Store | صفحه اصلی و تعرفه‌ها</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#080b18;--panel:#11172b;--panel2:#171e38;--text:#f4f6ff;--muted:#a5aecb;--purple:#9b7bff;--cyan:#55e6d0;--line:rgba(255,255,255,.09)}
@@ -169,23 +169,11 @@ html{scroll-behavior:smooth}
 .order-bottom{margin:22px 0 8px;padding:22px;border:1px solid #55e6d02c;border-radius:22px;background:linear-gradient(120deg,#9b7bff12,#55e6d00d);text-align:center}.order-bottom p{margin:0 0 14px;color:var(--muted);font-size:13px}.main-order-btn{border:0;border-radius:14px;padding:14px 36px;font:inherit;font-weight:900;color:#07131a;background:linear-gradient(100deg,var(--cyan),#9b7bff);cursor:pointer;box-shadow:0 8px 30px #55e6d022;transition:transform .2s,box-shadow .2s}.main-order-btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px #9b7bff35}
 .modal-backdrop{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(3,6,17,.82);backdrop-filter:blur(10px);overflow:auto}.modal-backdrop[hidden]{display:none}.order-modal-card{position:relative;width:min(620px,100%);max-height:min(90vh,850px);overflow:auto;padding:25px;border:1px solid #6d5ab855;border-radius:24px;background:linear-gradient(145deg,#141b35,#090f20);box-shadow:0 25px 100px #0009;animation:modal-in .25s ease-out}.modal-close{position:absolute;left:16px;top:14px;width:36px;height:36px;border-radius:12px;border:1px solid var(--line);background:#ffffff09;color:var(--text);font-size:25px;cursor:pointer}.order-modal-card h2{font-size:24px;margin:15px 0 5px}.modal-subtitle{margin:0 0 16px;color:var(--muted);font-size:13px}.order-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.plan-choice{display:flex;flex-direction:column;gap:5px;text-align:right;padding:13px;border:1px solid var(--line);border-radius:14px;background:#ffffff05;color:var(--text);font:inherit;cursor:pointer;transition:.18s}.plan-choice strong{font-size:15px}.plan-choice span{font-size:12px;color:var(--muted)}.plan-choice:hover,.plan-choice.selected{border-color:var(--cyan);background:#55e6d012;box-shadow:0 0 18px #55e6d010}.chosen-summary{margin-top:15px;padding:13px;border-radius:14px;background:#9b7bff12;border:1px solid #9b7bff3a;line-height:1.9;font-size:13px}.contact-choices{margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}.contact-choices>p:first-child{font-weight:800;margin:0 0 12px}.contact-choice-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.channel-btn,.copy-order{display:flex;align-items:center;justify-content:center;text-decoration:none;border-radius:13px;padding:13px 14px;font:inherit;font-weight:900;cursor:pointer}.telegram-btn{color:#e8fbff;background:linear-gradient(120deg,#168dcc,#1678bd)}.rubika-btn{color:#fff;background:linear-gradient(120deg,#e74c75,#9c3bc7)}.channel-hint{color:var(--muted);font-size:11px;line-height:1.9;margin:11px 0}.copy-order{width:100%;color:var(--text);border:1px solid #9b7bff55;background:#9b7bff12}.copy-feedback{display:block;font-size:12px;color:var(--cyan);margin-top:7px}.order-custom{border:0;cursor:pointer;font:inherit}.order-link,.best-tag{display:none!important}@keyframes modal-in{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}@media(max-width:500px){.order-modal-card{padding:20px 14px}.order-modal-card h2{font-size:21px}.order-options{grid-template-columns:1fr 1fr}.plan-choice{padding:11px}.plan-choice strong{font-size:13px}.contact-choice-row{grid-template-columns:1fr}}
 
-
-/* polish: subtle motion, hover feedback, and accessibility */
-@keyframes vpnFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-.hero, .card, .custom, .faq, .contact-card, .trust-item { animation: vpnFadeUp .55s ease both; }
-.contact-card, .trust-item, .plan-choice, .tab, .contact-link, .main-order-btn, .order-custom, .channel-btn, .copy-order {
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
-}
-.contact-card:hover, .trust-item:hover { transform: translateY(-3px); }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
-}
-
 </style>
 </head>
 <body>
 <main class="wrap">
-<div class="topbar" style="margin:0 0 22px"><div class="brand"><span class="brandmark">N</span><span>NOVEX</span></div><nav class="toplinks"><a href="index.html">صفحه اصلی ↗</a><a href="account.html">پنل کاربری</a><a href="https://t.me/Omid1262" target="_blank" rel="noopener noreferrer">ارتباط با ما ↗</a></nav></div>
+<div class="topbar" style="margin:0 0 22px"><div class="brand"><span class="brandmark">V</span><span>VPN <span style="color:var(--cyan)">STORE</span></span></div><nav class="toplinks"><a href="index.html">صفحه اصلی ↗</a><a href="https://t.me/Omid1262" target="_blank" rel="noopener noreferrer">ارتباط با ما ↗</a></nav></div>
   <div class="pricing-heading" id="pricing">
     <div><h2>تعرفه‌های VPN</h2><p>پلن مناسب خودت رو انتخاب کن؛ شفاف، ساده و به‌صرفه.</p></div>
   </div>
@@ -197,15 +185,15 @@ html{scroll-behavior:smooth}
   </header>
 
   <nav class="tabs" aria-label="دسته‌بندی تعرفه‌ها">
-    <button class="tab active" data-panel="small" type="button"><strong>تعرفه اقتصادی</strong><small>۱۰ تا ۵۰ گیگ • هر ۵ گیگ</small></button>
+    <button class="tab active" data-panel="large" type="button"><strong>حجم بالا</strong><small>۱۰۰ تا ۳۰۰ گیگ</small></button>
     <button class="tab" data-panel="mid" type="button"><strong>تعرفه ویژه</strong><small>۶۰ تا ۹۰ گیگ</small></button>
-    <button class="tab" data-panel="large" type="button"><strong>حجم بالا</strong><small>۱۰۰ تا ۳۰۰ گیگ</small></button>
+    <button class="tab" data-panel="small" type="button"><strong>تعرفه اقتصادی</strong><small>۱۰ تا ۵۰ گیگ • هر ۵ گیگ</small></button>
   </nav>
 
   <section class="card">
     <div class="cardhead">
-      <div><h2 id="panel-title">تعرفه اقتصادی</h2><p id="panel-desc">مناسب مصرف روزمره</p></div>
-      <span class="pill" id="panel-rate">هر گیگ ۵,۰۰۰ تومان</span>
+      <div><h2 id="panel-title">حجم بالا</h2><p id="panel-desc">برای مصرف سنگین‌تر</p></div>
+      <span class="pill" id="panel-rate">هر گیگ ۴,۰۰۰ تومان</span>
     </div>
     <table>
       <thead><tr><th>حجم</th><th>قیمت کل</th><th>قیمت هر گیگ</th></tr></thead>
@@ -240,13 +228,13 @@ html{scroll-behavior:smooth}
     <details><summary>حجم دلخواه چطور محاسبه می‌شود؟</summary><p>حجم را به گیگابایت وارد کن؛ قیمت آن با نرخ ۶٬۰۰۰ تومان برای هر گیگ محاسبه و با نرخ تعرفه‌های لیست مقایسه می‌شود.</p></details>
     <details><summary>آیا سفارش به‌صورت خودکار ثبت می‌شود؟</summary><p>خیر؛ دکمه سفارش پیام آماده را باز می‌کند. برای نهایی شدن سفارش باید پیام را برای پشتیبانی ارسال کنی.</p></details>
   </section>
-  <p class="footer">NOVEX · قیمت‌ها به تومان هستند · <a href="index.html" style="color:var(--cyan);text-decoration:none">صفحه اصلی</a></p>
+  <p class="footer">VPN STORE · قیمت‌ها به تومان هستند · <a href="index.html" style="color:var(--cyan);text-decoration:none">صفحه اصلی</a></p>
 
 </main>
 <div class="modal-backdrop" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title" hidden>
   <section class="order-modal-card">
     <button class="modal-close" type="button" aria-label="بستن" onclick="closeOrderModal()">×</button>
-    <span class="eyebrow">NOVEX · ثبت سفارش</span>
+    <span class="eyebrow">VPN STORE · ثبت سفارش</span>
     <h2 id="order-modal-title">کدوم تعرفه رو می‌خوای؟</h2>
     <p class="modal-subtitle">یک حجم انتخاب کن؛ بعد روش ارتباط با ما رو مشخص کن.</p>
     <div id="order-options" class="order-options"></div>
@@ -257,7 +245,7 @@ html{scroll-behavior:smooth}
         <a id="order-telegram" class="channel-btn telegram-btn" href="https://t.me/Omid1262" target="_blank" rel="noopener noreferrer">تلگرام ↗</a>
         <a id="order-rubika" class="channel-btn rubika-btn" href="https://rubika.ir/oMiD1262" target="_blank" rel="noopener noreferrer">روبیکا ↗</a>
       </div>
-      <p class="channel-hint">برای پیام دادن در تلگرام، VPN را روشن کن یا پروکسی تلگرام را فعال کن. تلگرام پیام آماده را باز می‌کند. در روبیکا، پیام سفارش را کپی کن و برای پشتیبانی بفرست.</p>
+      <p class="channel-hint">تلگرام پیام آماده را باز می‌کند. در روبیکا، پیام سفارش را کپی کن و برای پشتیبانی بفرست.</p>
       <button class="copy-order" id="copy-order-message" type="button">کپی متن سفارش</button>
       <span id="copy-feedback" class="copy-feedback" aria-live="polite"></span>
     </div>
@@ -283,7 +271,7 @@ const data = {
 };
 const fa = n => n.toLocaleString('fa-IR');
 let selectedOrder = null;
-function makeOrderMessage(gb,total,kind){return `سلام، برای سفارش NOVEX پیام می‌دم.\nیادآوری: برای ارسال پیام در تلگرام، VPN روشن یا پروکسی تلگرام فعال باشد.\nنوع سفارش: ${kind}\nحجم: ${gb} گیگابایت\nمبلغ: ${total.toLocaleString('fa-IR')} تومان`;}
+function makeOrderMessage(gb,total,kind){return `سلام، برای سفارش VPN Store پیام می‌دم.\nنوع سفارش: ${kind}\nحجم: ${gb} گیگابایت\nمبلغ: ${total.toLocaleString('fa-IR')} تومان`;}
 function orderUrl(gb,total,kind){return 'https://t.me/Omid1262?text='+encodeURIComponent(makeOrderMessage(gb,total,kind));}
 function allPlans(){const out=[];Object.entries(data).forEach(([key,d])=>d.plans.forEach(([gb,rate])=>out.push({gb,rate,total:gb*rate,kind:d.title})));return out;}
 function openOrderModal(customOnly=false){
