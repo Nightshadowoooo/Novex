@@ -3,7 +3,7 @@
 /* step = پله‌ی حجم در هر دسته (گیگابایت) */
 const EXTRA_2M = 2000; // اختلاف قیمت هر گیگابایت دوره دوماهه
 const TIERS = [
-  { id: 'high',    name: 'حجم بالا',     min: 100, max: 300, step: 50, p1: 4000, p2: 6000, desc: 'مناسب مصرف زیاد و حجم‌های بزرگ.' },
+  { id: 'high',    name: 'حجم بالا',     min: 100, max: 300, step: 50, best: true, p1: 4000, p2: 6000, desc: 'مناسب مصرف زیاد و حجم‌های بزرگ.' },
   { id: 'special', name: 'تعرفه ویژه',   min: 60,  max: 90,  step: 5,  p1: 4500, p2: 6500, desc: 'مناسب مصرف متوسط با حجم متعادل.', rec: true },
   { id: 'eco',     name: 'تعرفه اقتصادی', min: 10,  max: 50,  step: 5,  p1: 5000, p2: 7000, desc: 'مناسب مصرف کم و شروع کار.' }
 ];
@@ -75,12 +75,37 @@ if (grid) {
   rg.max = VALID.length - 1;
   rg.step = 1;
 
+  /* جدول همه حجم‌ها (از بزرگ به کوچک) */
+  const vol = $('#vol');
+  const fmtK = n => (n / 1000).toLocaleString('fa-IR', { maximumFractionDigits: 1 });
+  function renderVol() {
+    if (!vol) return;
+    const mk = (tag, txt, cls) => { const e = document.createElement(tag); if (txt != null) e.textContent = txt; if (cls) e.className = cls; return e; };
+    const tb = mk('table'), cap = mk('caption', 'جدول قیمت همه حجم‌ها برای ' + DUR[dur], 'sr');
+    const hr = mk('tr'); ['📦 حجم (گیگ)', '💰 قیمت (هزار تومان)', '💎 قیمت هر گیگ'].forEach(h => { const th = mk('th', h); th.scope = 'col'; hr.append(th); });
+    tb.append(cap, mk('thead')); tb.tHead.append(hr);
+    const body = mk('tbody');
+    VALID.slice().reverse().forEach(v => {
+      const t = tierFor(v), p = priceOf(t, dur), tr = mk('tr', null, t.best ? 'best' : '');
+      const c1 = mk('td'), b = mk('button', null, 'vb'); b.type = 'button';
+      const g = mk('span', fa(v) + ' GB'); g.dir = 'ltr'; b.append(g); c1.append(b);
+      if (t.best) c1.append(mk('span', 'به‌صرفه', 'bdg'));
+      const c2 = mk('td', fmtK(v * p) + ' هزار'), c3 = mk('td'); c3.append(mk('span', toman(p), 'pill'));
+      tr.append(c1, c2, c3);
+      const pick = () => { gb = v; syncIn(); calc(); $('#calculator').scrollIntoView({ behavior: 'smooth' }); };
+      tr.addEventListener('click', e => { if (e.target !== b && !b.contains(e.target)) pick(); });
+      b.addEventListener('click', pick);
+      body.append(tr);
+    });
+    tb.append(body); const w = mk('div', null, 'vs'); w.append(tb); vol.textContent = ''; vol.append(w);
+  }
+
   const setDur = d => {
     dur = d;
     $$('.seg').forEach(s => { s.classList.toggle('two', d === 2); $$('button', s).forEach(b => b.setAttribute('aria-pressed', +b.dataset.d === d)); });
     const els = [...$$('.tier .price'), $('#sTot')];
     els.forEach(e => e.classList.add('swap'));
-    setTimeout(() => { paintTiers(d); calc(); els.forEach(e => e.classList.remove('swap')); }, 160);
+    setTimeout(() => { paintTiers(d); renderVol(); calc(); els.forEach(e => e.classList.remove('swap')); }, 160);
   };
   $$('.seg button').forEach(b => b.addEventListener('click', () => { if (+b.dataset.d !== dur) setDur(+b.dataset.d); }));
 
@@ -88,7 +113,7 @@ if (grid) {
   TIERS.forEach(t => grid.append(tierCard(t, dur, jump, 'انتخاب تعرفه')));
   const chips = $('#chips');
   TIERS.forEach(t => { const c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.textContent = `${t.name}: ${fa(t.min)} تا ${fa(t.max)} (پله ${fa(t.step)})`; c.addEventListener('click', () => { gb = t.min; syncIn(); calc(); }); chips.append(c); });
-  paintTiers(dur);
+  paintTiers(dur); renderVol();
 
   const syncIn = () => { gbIn.value = fa(gb); const i = VALID.indexOf(gb); if (i >= 0) rg.value = i; };
   const norm = s => s.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[,٬\s]/g, '');
