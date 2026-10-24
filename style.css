@@ -176,3 +176,4 @@ nav a{padding:12px 16px}
 @media(max-width:900px){.stage{grid-template-columns:1fr;gap:22px}.orb{max-width:320px}}
 .dial{direction:ltr}
 .orb-t small{color:#fff;opacity:.9}
+.orb[data-tier=custom]{--oa:#34D399;--ob:#22D3EE}
