@@ -82,16 +82,15 @@ if (grid) {
     if (!vol) return;
     const mk = (tag, txt, cls) => { const e = document.createElement(tag); if (txt != null) e.textContent = txt; if (cls) e.className = cls; return e; };
     const tb = mk('table'), cap = mk('caption', 'جدول قیمت همه حجم‌ها برای ' + DUR[dur], 'sr');
-    const hr = mk('tr'); ['📦 حجم (گیگ)', '💰 قیمت (هزار تومان)', '💎 قیمت هر گیگ'].forEach(h => { const th = mk('th', h); th.scope = 'col'; hr.append(th); });
+    const hr = mk('tr'); ['حجم', 'قیمت'].forEach(h => { const th = mk('th', h); th.scope = 'col'; hr.append(th); });
     tb.append(cap, mk('thead')); tb.tHead.append(hr);
     const body = mk('tbody');
-    VALID.slice().reverse().forEach(v => {
-      const t = tierFor(v), p = priceOf(t, dur), tr = mk('tr', null, t.best ? 'best' : '');
+    VALID.forEach(v => {
+      const t = tierFor(v), p = priceOf(t, dur), tr = mk('tr');
       const c1 = mk('td'), b = mk('button', null, 'vb'); b.type = 'button';
-      const g = mk('span', fa(v) + ' GB'); g.dir = 'ltr'; b.append(g); c1.append(b);
-      if (t.best) c1.append(mk('span', 'به‌صرفه', 'bdg'));
-      const c2 = mk('td', fmtK(v * p) + ' هزار'), c3 = mk('td'); c3.append(mk('span', toman(p), 'pill'));
-      tr.append(c1, c2, c3);
+      const g = mk('span', fa(v) + ' گیگ'); b.append(g); c1.append(b);
+      const c2 = mk('td', fmtK(v * p) + ' هزار تومان');
+      tr.append(c1, c2);
       const pick = () => { gb = v; syncIn(); calc(); $('#calculator').scrollIntoView({ behavior: 'smooth' }); };
       tr.addEventListener('click', e => { if (e.target !== b && !b.contains(e.target)) pick(); });
       b.addEventListener('click', pick);
