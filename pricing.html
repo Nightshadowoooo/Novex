@@ -28,18 +28,34 @@
 <section style="padding-top:44px"><div class="wrap"><div class="grid g3" id="tiers"></div></div></section>
 <section id="volSec" style="padding-top:20px"><div class="wrap"><div class="sec-head rv"><h2 id="volTitle">قیمت همه حجم‌ها</h2><p class="lead">یکی از تعرفه‌های بالا را بزن تا حجم‌های همان دسته بیاید. اگر سرویس دوماهه می‌خواهی، گزینه «دو ماهه» را بزن تا قیمت‌ها بیشتر شوند.</p><div class="seg" role="group" aria-label="مدت سرویس لیست"><span class="th"></span><button type="button" data-d="1" aria-pressed="true">یک ماهه</button><button type="button" data-d="2" aria-pressed="false">دو ماهه</button></div><div><button type="button" class="btn" id="volAll" style="display:none;margin-top:14px">نمایش همه حجم‌ها</button></div></div><div class="vt rv" id="vol"></div></div></section>
 <section id="calculator" style="padding-top:20px"><div class="wrap">
-<div class="sec-head rv"><h2>ماشین‌حساب قیمت</h2><p class="lead">حجم دلخواهت را وارد کن؛ دسته تعرفه خودکار تشخیص داده می‌شود.</p></div>
-<div class="calc rv"><div class="card">
-<div class="row"><div><label for="gb">حجم (گیگابایت)</label><input type="text" id="gb" inputmode="numeric" autocomplete="off" value="۲۰" aria-describedby="err"></div>
-<div><span style="font-weight:600;display:block;margin-bottom:6px">مدت سرویس</span><div class="seg" id="seg2" role="group" aria-label="مدت سرویس ماشین‌حساب" style="margin:0"><span class="th"></span><button type="button" data-d="1" aria-pressed="true">یک ماه</button><button type="button" data-d="2" aria-pressed="false">دو ماه</button></div></div></div>
-<label for="rg">انتخاب با اسلایدر</label><input type="range" id="rg" min="0" value="10" aria-label="حجم انتخاب‌شده">
+<div class="sec-head rv"><h2>حجمت را بساز</h2><p class="lead">اسلایدر را بکش تا ظرف پر شود؛ قیمت نهایی همان لحظه عوض می‌شود. هر حجمی از ۱ تا ۳۰۰ گیگابایت.</p></div>
+<div class="stage rv">
+<div class="orb" id="orb" data-tier="eco" aria-hidden="true"><svg viewBox="0 0 320 320">
+<defs><linearGradient id="og" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--oa)"/><stop offset="1" style="stop-color:var(--ob)"/></linearGradient>
+<radialGradient id="ogl"><stop offset="0" style="stop-color:var(--oa)" stop-opacity=".4"/><stop offset="1" style="stop-color:var(--oa)" stop-opacity="0"/></radialGradient>
+<clipPath id="oc"><circle cx="160" cy="160" r="118"/></clipPath></defs>
+<circle class="pulse" cx="160" cy="160" r="156" fill="url(#ogl)"/>
+<g class="oring"><circle cx="160" cy="160" r="152" fill="none" stroke="url(#og)" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="3 11"/><circle cx="160" cy="8" r="5" fill="var(--ob)"/></g>
+<g class="oring o2"><circle cx="160" cy="160" r="104" fill="none" stroke="#fff" stroke-opacity=".12" stroke-dasharray="2 9"/><circle cx="264" cy="160" r="4" fill="var(--oa)"/></g>
+<circle cx="160" cy="160" r="118" fill="#0b0d1d" stroke="rgba(255,255,255,.12)"/>
+<g clip-path="url(#oc)"><g id="liq" style="transform:translateY(258px)">
+<path class="wave w2" fill="url(#og)" opacity=".45" d="M0 20q40-20 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V420H0Z"/>
+<path class="wave w1" fill="url(#og)" opacity=".9" d="M0 20q40-20 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V420H0Z"/>
+<circle class="bub" cx="110" cy="150" r="4"/><circle class="bub b2" cx="170" cy="170" r="3"/><circle class="bub b3" cx="215" cy="140" r="5"/><circle class="bub b4" cx="140" cy="190" r="2.5"/></g></g>
+<circle id="oP" cx="160" cy="160" r="135" fill="none" stroke="url(#og)" stroke-width="7" stroke-linecap="round" stroke-dasharray="848.23" stroke-dashoffset="848.23" transform="rotate(-90 160 160)"/>
+</svg>
+<div class="orb-t"><b id="oN">۰</b><small>GB</small><span id="oT">-</span></div></div>
+<div class="panel card">
+<div class="pbig"><small>قیمت نهایی</small><div class="total" id="sTot">-</div></div>
+<div class="seg" id="seg2" role="group" aria-label="مدت سرویس" style="margin:0 0 18px"><span class="th"></span><button type="button" data-d="1" aria-pressed="true">یک ماه</button><button type="button" data-d="2" aria-pressed="false">دو ماه</button></div>
+<label class="fl2" for="rg">حجم دلخواه</label>
+<div class="dial"><button type="button" class="stp" id="dn" aria-label="یک گیگ کمتر">−</button><input type="range" id="rg" min="1" max="300" value="20" aria-label="حجم انتخاب‌شده"><button type="button" class="stp" id="up" aria-label="یک گیگ بیشتر">+</button></div>
+<div class="gbrow"><input type="text" id="gb" inputmode="numeric" autocomplete="off" value="۲۰" aria-label="حجم به گیگابایت" aria-describedby="err"><span>گیگابایت</span></div>
 <div class="chips" id="chips" aria-label="رفتن به دسته"></div>
 <p class="err" id="err" role="alert"></p>
-<p class="lead" style="font-size:.88rem">هر حجمی از ۱ تا ۳۰۰ گیگابایت را می‌توانی وارد کنی.</p></div>
-<aside class="card sum" aria-live="polite"><h3>خلاصه قیمت</h3>
-<dl><dt>دسته</dt><dd id="sT">-</dd><dt>حجم</dt><dd id="sV">-</dd><dt>مدت</dt><dd id="sD">-</dd><dt>هر گیگابایت</dt><dd id="sP">-</dd></dl>
-<div>قیمت نهایی</div><div class="total" id="sTot">-</div>
-<button class="btn pri" type="button" id="orderBtn">ثبت سفارش</button></aside></div></div></section>
+<div class="sum" aria-live="polite"><dl><dt>دسته</dt><dd id="sT">-</dd><dt>حجم</dt><dd id="sV">-</dd><dt>مدت</dt><dd id="sD">-</dd><dt>هر گیگابایت</dt><dd id="sP">-</dd></dl>
+<button class="btn pri" type="button" id="orderBtn">ثبت سفارش</button></div>
+</div></div></div></section>
 </main>
 <div class="ov" id="ov" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
 <button class="btn x" type="button" id="mx" aria-label="بستن">✕</button><h3 id="mt">خلاصه سفارش</h3>
