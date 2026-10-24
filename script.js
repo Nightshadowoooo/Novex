@@ -40,7 +40,7 @@ $$('.q > h3 > button').forEach(b => b.addEventListener('click', () => {
 /* کارت‌های تعرفه */
 function tierCard(t, d, onBtn, label) {
   const a = document.createElement('article');
-  a.className = 'card tier rv vis' + (t.rec ? ' rec' : '');
+  a.className = 'card tier rv vis' + (t.rec ? ' rec' : ''); a.dataset.id = t.id;
   const mk = (tag, txt, cls) => { const e = document.createElement(tag); e.textContent = txt; if (cls) e.className = cls; return e; };
   if (t.rec) a.append(mk('span', 'انتخاب پیشنهادی', 'tag'));
   a.append(mk('h3', t.name), mk('p', t.desc), mk('p', `${fa(t.min)} تا ${fa(t.max)} گیگابایت (پله‌ی ${fa(t.step)} گیگ)`, 'rng'));
@@ -62,7 +62,7 @@ function paintTiers(d) {
 /* صفحه اصلی */
 const home = $('#homeTiers');
 if (home) {
-  TIERS.forEach(t => home.append(tierCard(t, 1, { href: 'pricing.html' }, 'مشاهده جزئیات')));
+  TIERS.forEach(t => home.append(tierCard(t, 1, { href: 'pricing.html#' + t.id }, 'مشاهده جزئیات')));
   paintTiers(1);
   [['h1', 2], ['h2', 1], ['h3', 0]].forEach(([id, i]) => { $('#' + id).textContent = fa(TIERS[i].p1) + ' تومان'; });
 }
@@ -70,7 +70,7 @@ if (home) {
 /* صفحه تعرفه‌ها */
 const grid = $('#tiers');
 if (grid) {
-  let dur = 1, gb = 20;
+  let dur = 1, gb = 20, sel = null;
   const gbIn = $('#gb'), rg = $('#rg'), err = $('#err'), order = $('#orderBtn');
   rg.max = VALID.length - 1;
   rg.step = 1;
@@ -81,11 +81,14 @@ if (grid) {
   function renderVol() {
     if (!vol) return;
     const mk = (tag, txt, cls) => { const e = document.createElement(tag); if (txt != null) e.textContent = txt; if (cls) e.className = cls; return e; };
-    const tb = mk('table'), cap = mk('caption', 'جدول قیمت همه حجم‌ها برای ' + DUR[dur], 'sr');
+    const tb = mk('table'), cap = mk('caption', 'جدول قیمت حجم‌ها برای ' + DUR[dur], 'sr');
     const hr = mk('tr'); ['حجم', 'قیمت'].forEach(h => { const th = mk('th', h); th.scope = 'col'; hr.append(th); });
     tb.append(cap, mk('thead')); tb.tHead.append(hr);
     const body = mk('tbody');
-    VALID.forEach(v => {
+    const st = TIERS.find(x => x.id === sel);
+    $('#volTitle').textContent = st ? `حجم‌های ${st.name} (${fa(st.min)} تا ${fa(st.max)} گیگ)` : 'قیمت همه حجم‌ها';
+    $('#volAll').style.display = st ? '' : 'none';
+    VALID.filter(v => !st || tierFor(v) === st).forEach(v => {
       const t = tierFor(v), p = priceOf(t, dur), tr = mk('tr');
       const c1 = mk('td'), b = mk('button', null, 'vb'); b.type = 'button';
       const g = mk('span', fa(v) + ' گیگ'); b.append(g); c1.append(b);
@@ -108,8 +111,10 @@ if (grid) {
   };
   $$('.seg button').forEach(b => b.addEventListener('click', () => { if (+b.dataset.d !== dur) setDur(+b.dataset.d); }));
 
-  const jump = t => { gb = t.min; syncIn(); calc(); $('#calculator').scrollIntoView({ behavior: 'smooth' }); toast('دسته «' + t.name + '» انتخاب شد'); };
-  TIERS.forEach(t => grid.append(tierCard(t, dur, jump, 'انتخاب تعرفه')));
+  const setSel = id => { sel = id; $$('.tier', grid).forEach(c => c.classList.toggle('sel', c.dataset.id === id)); renderVol(); };
+  const jump = t => { setSel(t.id); $('#volSec').scrollIntoView({ behavior: 'smooth' }); };
+  $('#volAll').addEventListener('click', () => setSel(null));
+  TIERS.forEach(t => grid.append(tierCard(t, dur, jump, 'مشاهده حجم‌ها')));
   const chips = $('#chips');
   TIERS.forEach(t => { const c = document.createElement('button'); c.type = 'button'; c.className = 'chip'; c.textContent = `${t.name}: ${fa(t.min)} تا ${fa(t.max)} (پله ${fa(t.step)})`; c.addEventListener('click', () => { gb = t.min; syncIn(); calc(); }); chips.append(c); });
   paintTiers(dur); renderVol();
@@ -162,4 +167,6 @@ if (grid) {
     catch { const a = document.createElement('textarea'); a.value = tx; document.body.append(a); a.select(); try { document.execCommand('copy'); toast('اطلاعات سفارش کپی شد.'); } catch { toast('کپی انجام نشد؛ متن را دستی انتخاب کن.'); } a.remove(); }
   });
   syncIn(); calc();
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (TIERS.some(t => t.id === h)) { setSel(h); setTimeout(() => $('#volSec').scrollIntoView(), 150); }
 }
