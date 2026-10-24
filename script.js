@@ -133,20 +133,42 @@ if (grid) {
     if (v < 1 || v > 300) return { e: 'حجم مجاز بین ۱ تا ۳۰۰ گیگابایت است.', v };
     return { v };
   }
+  /* شمارش انیمیشنی اعداد */
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function anim(el, to, fmt) {
+    cancelAnimationFrame(el._r);
+    const from = el._v == null ? 0 : el._v; el._v = to;
+    if (RM || from === to) { el.textContent = fmt(to); return; }
+    const t0 = performance.now();
+    const f = now => { const k = Math.min(1, (now - t0) / 550), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(Math.round(from + (to - from) * e)); if (k < 1) el._r = requestAnimationFrame(f); };
+    el._r = requestAnimationFrame(f);
+  }
+  /* کره‌ی مایع: سطح آب و حلقه‌ی پیشرفت با حجم عوض می‌شود */
+  function orbSet(v, t) {
+    const orb = $('#orb'); orb.classList.toggle('bad', v == null);
+    if (v == null) return;
+    orb.dataset.tier = t.id; $('#oT').textContent = t.name;
+    $('#liq').style.transform = `translateY(${258 - (.05 + .95 * v / 300) * 236}px)`;
+    $('#oP').style.strokeDashoffset = 848.23 * (1 - v / 300);
+    const n = $('#oN'); anim(n, v, fa); n.classList.remove('pop'); void n.offsetWidth; n.classList.add('pop');
+  }
   let cur = null;
   function calc() {
     const r = validate(gbIn.value);
     err.textContent = r.e || '';
-    const set = (a, b, c, d, e) => { $('#sT').textContent = a; $('#sV').textContent = b; $('#sD').textContent = c; $('#sP').textContent = d; $('#sTot').textContent = e; };
-    if (r.e) { cur = null; order.disabled = true; set('-', '-', DUR[dur], '-', '-'); return; }
+    const set = (a, b, c, d, e) => { $('#sT').textContent = a; $('#sV').textContent = b; $('#sD').textContent = c; $('#sP').textContent = d; if (typeof e === 'string') { $('#sTot')._v = null; cancelAnimationFrame($('#sTot')._r); $('#sTot').textContent = e; } else anim($('#sTot'), e, toman); };
+    if (r.e) { cur = null; order.disabled = true; set('-', '-', DUR[dur], '-', '-'); orbSet(null); return; }
     gb = r.v; const t = tierOf(gb), p = priceOf(t, dur);
     cur = { t, gb, dur, p, total: gb * p }; order.disabled = false;
     rg.value = gb;
-    set(t.name, fa(gb) + ' گیگابایت', DUR[dur], toman(p), toman(cur.total));
+    set(t.name, fa(gb) + ' گیگابایت', DUR[dur], toman(p), cur.total);
+    orbSet(gb, t);
   }
   gbIn.addEventListener('input', calc);
   gbIn.addEventListener('blur', () => { if (cur) gbIn.value = fa(cur.gb); });
   rg.addEventListener('input', () => { gb = +rg.value; syncIn(); calc(); });
+  $('#dn').addEventListener('click', () => { gb = Math.max(1, (cur ? cur.gb : gb) - 1); syncIn(); calc(); });
+  $('#up').addEventListener('click', () => { gb = Math.min(300, (cur ? cur.gb : gb) + 1); syncIn(); calc(); });
 
   /* پنجره سفارش */
   const ov = $('#ov'); let last;
@@ -169,4 +191,4 @@ if (grid) {
   syncIn(); calc();
   const h = decodeURIComponent(location.hash.slice(1));
   if (TIERS.some(t => t.id === h)) { setSel(h); setTimeout(() => $('#volSec').scrollIntoView(), 150); }
-                                                      }
+}
