@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تعرفه‌های NOVEX | محاسبه قیمت سرویس حجمی</title>
+<meta name="description" content="تعرفه‌های یک‌ماهه و دوماهه NOVEX را ببین، قیمت حجم دلخواهت را حساب کن و برای ثبت سفارش ارتباط بگیر.">
+<meta name="theme-color" content="#080914">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238B5CF6'/%3E%3Cpath d='M8 24V8l16 16V8' stroke='%2322D3EE' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="index.html" aria-label="NOVEX - صفحه اصلی"><i></i><span>NOV<b>EX</b></span></a>
+<button class="btn menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="باز و بسته کردن منو"><span></span><span></span><span></span></button>
+<nav id="nav" aria-label="منوی اصلی">
+<a href="index.html">صفحه اصلی</a>
+<a href="pricing.html" aria-current="page">تعرفه‌ها</a>
+<a href="index.html#contact">تماس با ما</a>
+<a class="btn pri" href="pricing.html#calculator">ثبت سفارش</a>
+</nav></div></header>
+
+<main>
+<section class="ph"><div class="wrap"><h1 class="in">تعرفه‌های NOVEX</h1><p class="lead in d1">حجم موردنیازت را انتخاب کن، قیمت را ببین و برای ثبت سفارش با ما ارتباط بگیر.</p>
+<div class="seg in d2" role="group" aria-label="مدت سرویس"><span class="th"></span><button type="button" data-d="1" aria-pressed="true">یک ماه</button><button type="button" data-d="2" aria-pressed="false">دو ماه</button></div></div></section>
+<section style="padding-top:44px"><div class="wrap"><div class="grid g3" id="tiers"></div></div></section>
+<section id="volSec" style="padding-top:20px"><div class="wrap"><div class="sec-head rv"><h2 id="volTitle">قیمت همه حجم‌ها</h2><p class="lead">یکی از تعرفه‌های بالا را بزن تا حجم‌های همان دسته بیاید. اگر سرویس دوماهه می‌خواهی، گزینه «دو ماهه» را بزن تا قیمت‌ها بیشتر شوند.</p><div class="seg" role="group" aria-label="مدت سرویس لیست"><span class="th"></span><button type="button" data-d="1" aria-pressed="true">یک ماهه</button><button type="button" data-d="2" aria-pressed="false">دو ماهه</button></div><div><button type="button" class="btn" id="volAll" style="display:none;margin-top:14px">نمایش همه حجم‌ها</button></div></div><div class="vt rv" id="vol"></div></div></section>
+<section id="calculator" style="padding-top:20px"><div class="wrap">
+<div class="sec-head rv"><h2>حجمت را بساز</h2><p class="lead">اسلایدر را بکش تا ظرف پر شود؛ قیمت نهایی همان لحظه عوض می‌شود. هر حجمی از ۱ تا ۳۰۰ گیگابایت.</p></div>
+<div class="stage rv">
+<div class="orb" id="orb" data-tier="eco" aria-hidden="true"><svg viewBox="0 0 320 320">
+<defs><linearGradient id="og" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--oa)"/><stop offset="1" style="stop-color:var(--ob)"/></linearGradient>
+<radialGradient id="ogl"><stop offset="0" style="stop-color:var(--oa)" stop-opacity=".4"/><stop offset="1" style="stop-color:var(--oa)" stop-opacity="0"/></radialGradient>
+<clipPath id="oc"><circle cx="160" cy="160" r="118"/></clipPath></defs>
+<circle class="pulse" cx="160" cy="160" r="156" fill="url(#ogl)"/>
+<g class="oring"><circle cx="160" cy="160" r="152" fill="none" stroke="url(#og)" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="3 11"/><circle cx="160" cy="8" r="5" fill="var(--ob)"/></g>
+<g class="oring o2"><circle cx="160" cy="160" r="104" fill="none" stroke="#fff" stroke-opacity=".12" stroke-dasharray="2 9"/><circle cx="264" cy="160" r="4" fill="var(--oa)"/></g>
+<circle cx="160" cy="160" r="118" fill="#0b0d1d" stroke="rgba(255,255,255,.12)"/>
+<g clip-path="url(#oc)"><g id="liq" style="transform:translateY(258px)">
+<path class="wave w2" fill="url(#og)" opacity=".45" d="M0 20q40-20 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V420H0Z"/>
+<path class="wave w1" fill="url(#og)" opacity=".9" d="M0 20q40-20 80 0t80 0t80 0t80 0t80 0t80 0t80 0t80 0V420H0Z"/>
+<circle class="bub" cx="110" cy="150" r="4"/><circle class="bub b2" cx="170" cy="170" r="3"/><circle class="bub b3" cx="215" cy="140" r="5"/><circle class="bub b4" cx="140" cy="190" r="2.5"/></g></g>
+<circle id="oP" cx="160" cy="160" r="135" fill="none" stroke="url(#og)" stroke-width="7" stroke-linecap="round" stroke-dasharray="848.23" stroke-dashoffset="848.23" transform="rotate(-90 160 160)"/>
+</svg>
+<div class="orb-t"><b id="oN">۰</b><small>GB</small><span id="oT">-</span></div></div>
+<div class="panel card">
+<div class="pbig"><small>قیمت نهایی</small><div class="total" id="sTot">-</div></div>
+<div class="seg" id="seg2" role="group" aria-label="مدت سرویس" style="margin:0 0 18px"><span class="th"></span><button type="button" data-d="1" aria-pressed="true">یک ماه</button><button type="button" data-d="2" aria-pressed="false">دو ماه</button></div>
+<label class="fl2" for="rg">حجم دلخواه</label>
+<div class="dial"><button type="button" class="stp" id="dn" aria-label="یک گیگ کمتر">−</button><input type="range" id="rg" min="1" max="300" value="20" aria-label="حجم انتخاب‌شده"><button type="button" class="stp" id="up" aria-label="یک گیگ بیشتر">+</button></div>
+<div class="gbrow"><input type="text" id="gb" inputmode="numeric" autocomplete="off" value="۲۰" aria-label="حجم به گیگابایت" aria-describedby="err"><span>گیگابایت</span></div>
+<div class="chips" id="chips" aria-label="رفتن به دسته"></div>
+<p class="err" id="err" role="alert"></p>
+<div class="sum" aria-live="polite"><dl><dt>دسته</dt><dd id="sT">-</dd><dt>حجم</dt><dd id="sV">-</dd><dt>مدت</dt><dd id="sD">-</dd><dt>هر گیگابایت</dt><dd id="sP">-</dd></dl>
+<button class="btn pri" type="button" id="orderBtn">ثبت سفارش</button></div>
+</div></div></div></section>
+</main>
+<div class="ov" id="ov" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+<button class="btn x" type="button" id="mx" aria-label="بستن">✕</button><h3 id="mt">خلاصه سفارش</h3>
+<pre id="mp"></pre><p class="lead" style="font-size:.88rem">این سایت پرداخت یا ثبت نهایی سفارش ندارد؛ برای ادامه، خلاصه را از یکی از راه‌های زیر برای ما بفرست.</p>
+<a class="btn pri" id="mtg" target="_blank" rel="noopener noreferrer" href="https://t.me/Omid1262">سفارش از طریق تلگرام</a>
+<a class="btn pri" href="https://rubika.ir/oMiD1262" target="_blank" rel="noopener noreferrer">سفارش از طریق حساب روبیکا</a>
+<a class="btn" href="https://rubika.ir/NovexStore" target="_blank" rel="noopener noreferrer">مشاهده کانال روبیکا</a>
+<button class="btn" type="button" id="mc">کپی اطلاعات سفارش</button></div></div>
+<footer><div class="wrap">
+<div class="ft">
+<div><a class="logo" href="index.html" aria-label="NOVEX"><i></i><span>NOV<b>EX</b></span></a><p>NOVEX محل معرفی و سفارش سرویس‌های حجمی است. تعرفه را ببین، قیمت را حساب کن و برای ادامه سفارش با ما در ارتباط باش.</p></div>
+<div><h4>صفحات</h4><ul><li><a href="index.html">صفحه اصلی</a></li><li><a href="pricing.html">تعرفه‌ها</a></li></ul></div>
+<div><h4>ارتباط با ما</h4><ul>
+<li><a href="https://t.me/Omid1262" target="_blank" rel="noopener noreferrer">تلگرام</a></li>
+<li><a href="https://rubika.ir/oMiD1262" target="_blank" rel="noopener noreferrer">حساب روبیکا</a></li>
+<li><a href="https://rubika.ir/NovexStore" target="_blank" rel="noopener noreferrer">کانال روبیکا</a></li></ul></div>
+</div>
+<p class="copy">© ۲۰۲۶ NOVEX. تمامی حقوق محفوظ است.</p>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body></html>
